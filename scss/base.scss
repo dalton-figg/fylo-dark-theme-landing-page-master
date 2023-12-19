@@ -1,0 +1,391 @@
+@import "../scss/utilities/base";
+
+/* Reset */
+
+*,
+::before,
+::after {
+  /* use a better box sixing */
+  box-sizing: border-box;
+  /* remove all margin and padding from elements */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* normalize font weights across operating systems/browsers */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* ensure any scrolling within a page is smooth */
+  scroll-behavior: smooth;
+}
+
+body {
+  /* set base styles */
+  background: $clr-primary-300;
+  color: $clr-primary-900;
+  font-family: $font-primary;
+  @include font-size(14);
+  /* increase the line height to be more accessible */
+  line-height: 1.5;
+}
+
+img {
+  /* remove extra whitespace */
+  display: block;
+  /* ensure size is correct and responsive */
+  height: auto;
+  max-width: 100%;
+  /* make alt text more distinguishable */
+  font-style: italic;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* add accent font to all titles */
+  font-family: $font-secondary;
+}
+
+/* Navigation */
+
+.primary-header {
+  background: $clr-primary-400;
+}
+
+.primary-navbar__list {
+  /* align all list items onto the same line in the center */
+  display: flex;
+  align-items: center;
+  /* add spacing between each list item */
+
+  gap: calc-rem(16);
+  /* ensure the content of the list does not spill out on larger screens, but maintains the full width background color */
+  /* center the list within the header */
+  @include max-width(1440px, true);
+  /* remove default list styling */
+  list-style: none;
+  /* add some spacing so the contents don't crash into the sides of the screens */
+
+  padding: calc-rem(24);
+
+  @include media(laptop) {
+    gap: calc-rem(48);
+    padding: calc-rem(56);
+  }
+}
+
+.primary-navbar__item--left {
+  margin-left: auto;
+}
+
+.primary-navbar__link {
+  /* remove default link styles */
+  text-decoration: none;
+  color: $clr-primary-900;
+  /* only other instance of the accent font family */
+  font-family: $font-secondary;
+}
+
+/* Hero */
+
+.hero {
+  display: grid;
+
+  /* sets background for continunity with the intro section and wave effect */
+
+  background: $clr-primary-400;
+
+  /* places everything ontop of each other within the hero */
+
+  > * {
+    grid-row: 1;
+    grid-column: 1;
+  }
+}
+
+.hero__background {
+  /* forces wave effect to the bottom center, so it is flush with the rest of the page */
+  margin: auto auto 0 auto;
+}
+
+.hero__content {
+  /* use flex for responsive control + adding a gap between the content */
+  @include flex-cols;
+  align-items: center;
+  gap: calc-rem(24);
+  /* align text center */
+  text-align: center;
+  /* contain the hero text but maintain the background color */
+  /* center the content */
+  @include max-width(330px, true);
+
+  // changing max-width of the content instead of the section so the wavy effect is maintained
+
+  @include media(tablet) {
+    @include max-width(450px, true);
+  }
+}
+
+.hero__cta {
+  @include gradient-button;
+}
+
+/* Body Tokens */
+
+.body-tokens {
+  /* create two columns */
+
+  display: grid;
+  place-items: center;
+  gap: calc-rem(80) 0;
+  /* contain content */
+
+  @include max-width(330px, true);
+  /* add padding on top and bottom to add space around the section */
+
+  padding-block: calc-rem(120);
+
+  @include media(laptop) {
+    @include grid-equal-cols;
+    @include max-width(1440px, true);
+    padding-block: calc-rem(160);
+  }
+}
+
+.body-token {
+  /* use of flex to align icon to the center */
+  @include flex-cols;
+  align-items: center;
+  /* add minimal spacing to have some breathing room */
+  gap: calc-rem(12);
+  /* align text center and contain the token */
+  text-align: center;
+  @include max-width(390px);
+}
+
+/* Body Columns */
+
+.body-columns {
+  /* body columns and tokens follow this pattern.. TODO: probably just use a body- prefix and then follow up with BEM */
+
+  display: grid;
+  place-items: center;
+  gap: calc-rem(24);
+  @include max-width(330px, true);
+
+  @include media(laptop) {
+    @include max-width(1440px, true);
+    @include grid-equal-cols($size: auto);
+  }
+}
+
+.body-columns__copy {
+  /* gap */
+  @include flex-cols;
+  gap: calc-rem(16);
+  /* container */
+  @include max-width(550px);
+}
+
+.body-columns__cta {
+  display: flex;
+  /* align with arrow logo */
+  align-items: center;
+  gap: calc-rem(8);
+  /* keep the underline, but move it slightly away */
+  text-underline-offset: calc-rem(8);
+  /* update color */
+  color: $clr-primary-800;
+}
+
+/* Testimonials */
+
+.testimonials {
+  @include flex-center;
+  flex-direction: column;
+  /* add gap */
+
+  gap: calc-rem(24);
+  /* breathing room for section */
+
+  padding-block: calc-rem(120);
+
+  @include media(desktop) {
+    flex-direction: row;
+    padding-block: calc-rem(160);
+    gap: calc-rem(48);
+  }
+}
+
+.testimonial {
+  // set columns
+  @include flex-cols;
+  gap: calc-rem(16);
+  border-radius: 0.75rem;
+  background: $clr-primary-500;
+  // contain content
+  @include max-width(330px);
+  padding: calc-rem(32);
+  @include media(tablet) {
+    @include max-width(400px);
+  }
+}
+
+.testimonial__author {
+  display: flex;
+  gap: calc-rem(16);
+  align-items: center;
+}
+
+.testimonial__author-image {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  @include max-width(32px);
+}
+
+/* Banner */
+
+.banner {
+  background: $clr-primary-400;
+  /* position */
+  gap: calc-rem(24);
+  text-align: center;
+  @include flex-cols;
+  /* add rounded corners */
+  border-radius: 0.75rem;
+  /* set size */
+  @include max-width(330px, true);
+
+  padding: 2rem;
+  /* allow for a z-index value so that it can go above the footer */
+  position: relative;
+  z-index: 99;
+  /* shift down half the value of height */
+
+  @include media(tablet) {
+    @include max-width(900px, true);
+  }
+  @include media(laptop) {
+    padding: 2.5rem;
+  }
+  @include media(desktop) {
+    margin-bottom: -125px;
+  }
+}
+
+.banner__copy {
+  /* set position for gap */
+  @include flex-cols;
+  gap: calc-rem(24);
+  /* set size */
+  @include max-width(650px, true);
+}
+
+.banner__form {
+  @include flex-center;
+  flex-direction: column;
+  gap: calc-rem(24);
+}
+
+.banner__input {
+  @include max-width(450px);
+  height: 50px;
+  @include appearance-reset(white);
+  border-radius: 100vw;
+  padding: calc-rem(24);
+}
+
+.banner__button {
+  @include appearance-reset(transparent);
+
+  @include gradient-button(266px);
+  @include media(desktop) {
+    @include gradient-button(225px);
+  }
+}
+
+/* Footer */
+
+.footer {
+  background: $clr-primary-200;
+
+  padding: calc-rem(180) calc-rem(24) calc-rem(32);
+
+  @include media(tablet) {
+    padding: calc-rem(32) calc-rem(24);
+  }
+
+  @include media(desktop) {
+    padding-block: calc-rem(240) calc-rem(160);
+  }
+}
+
+.footer__cols {
+  display: grid;
+  gap: calc-rem(24);
+  @include max-width(1280px, true);
+
+  @include media(laptop) {
+    @include grid-equal-cols($cols: 4);
+    justify-items: center;
+  }
+}
+
+.footer__intro {
+  @include flex-cols;
+  gap: calc-rem(24);
+}
+
+.footer__location {
+  display: flex;
+  gap: calc-rem(24);
+
+  img {
+    height: 16px;
+  }
+}
+
+.footer__contact-details {
+  @include flex-cols;
+  gap: calc-rem(16);
+}
+
+.footer__contact-detail {
+  display: flex;
+  align-items: center;
+  gap: calc-rem(16);
+}
+
+.footer__nav-list {
+  display: grid;
+
+  gap: calc-rem(24) 3.5rem;
+  list-style: none;
+  @include media(tablet) {
+    @include grid-equal-cols;
+  }
+}
+
+.footer__nav-link {
+  text-decoration: none;
+  color: $clr-primary-900;
+}
+
+.footer__socials {
+  display: flex;
+  gap: calc-rem(24);
+
+  /* set basic visual styles for each social icon - TODO: could be in anchor tags */
+
+  svg {
+    border-radius: 50%;
+    border: 1px solid white;
+    width: 35px;
+    height: 35px;
+    padding: calc-rem(8);
+  }
+}

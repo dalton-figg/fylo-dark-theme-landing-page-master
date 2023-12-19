@@ -1,0 +1,467 @@
+/* Reset */
+*,
+::before,
+::after {
+  /* use a better box sixing */
+  box-sizing: border-box;
+  /* remove all margin and padding from elements */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* normalize font weights across operating systems/browsers */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* ensure any scrolling within a page is smooth */
+  scroll-behavior: smooth;
+}
+
+body {
+  /* set base styles */
+  background: hsl(218, 28%, 13%);
+  color: hsl(0, 0%, 100%);
+  font-family: "Open Sans", "Arial", system-ui, sans-serif;
+  font-size: 14px;
+  font-size: 0.875rem;
+  /* increase the line height to be more accessible */
+  line-height: 1.5;
+}
+
+img {
+  /* remove extra whitespace */
+  display: block;
+  /* ensure size is correct and responsive */
+  height: auto;
+  max-width: 100%;
+  /* make alt text more distinguishable */
+  font-style: italic;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* add accent font to all titles */
+  font-family: "Raleway", "Arial", system-ui, sans-serif;
+}
+
+/* Navigation */
+.primary-header {
+  background: hsl(217, 28%, 15%);
+}
+
+.primary-navbar__list {
+  /* align all list items onto the same line in the center */
+  display: flex;
+  align-items: center;
+  /* add spacing between each list item */
+  gap: 1rem;
+  /* ensure the content of the list does not spill out on larger screens, but maintains the full width background color */
+  /* center the list within the header */
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  /* remove default list styling */
+  list-style: none;
+  /* add some spacing so the contents don't crash into the sides of the screens */
+  padding: 1.5rem;
+}
+@media only screen and (min-width: 1024px) {
+  .primary-navbar__list {
+    gap: 3rem;
+    padding: 3.5rem;
+  }
+}
+
+.primary-navbar__item--left {
+  margin-left: auto;
+}
+
+.primary-navbar__link {
+  /* remove default link styles */
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+  /* only other instance of the accent font family */
+  font-family: "Raleway", "Arial", system-ui, sans-serif;
+}
+
+/* Hero */
+.hero {
+  display: grid;
+  /* sets background for continunity with the intro section and wave effect */
+  background: hsl(217, 28%, 15%);
+  /* places everything ontop of each other within the hero */
+}
+.hero > * {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.hero__background {
+  /* forces wave effect to the bottom center, so it is flush with the rest of the page */
+  margin: auto auto 0 auto;
+}
+
+.hero__content {
+  /* use flex for responsive control + adding a gap between the content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  /* align text center */
+  text-align: center;
+  /* contain the hero text but maintain the background color */
+  /* center the content */
+  max-width: 330px;
+  width: 100%;
+  margin: 0 auto;
+}
+@media only screen and (min-width: 768px) {
+  .hero__content {
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.hero__cta {
+  border-radius: 100vw;
+  max-width: 200px;
+  width: 100%;
+  padding: 1rem;
+  font-weight: 700;
+  font-family: "Raleway", "Arial", system-ui, sans-serif;
+  text-align: center;
+  color: hsl(0, 0%, 100%);
+  text-decoration: none;
+  background-image: linear-gradient(90deg, hsl(176, 68%, 64%) 0%, hsl(187, 64%, 57%) 50%, hsl(198, 60%, 50%) 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(hsl(176, 68%, 64%)), color-stop(50%, hsl(187, 64%, 57%)), to(hsl(198, 60%, 50%)));
+  background-image: -o-linear-gradient(left, hsl(176, 68%, 64%) 0%, hsl(187, 64%, 57%) 50%, hsl(198, 60%, 50%) 100%);
+}
+
+/* Body Tokens */
+.body-tokens {
+  /* create two columns */
+  display: grid;
+  place-items: center;
+  gap: 5rem 0;
+  /* contain content */
+  max-width: 330px;
+  width: 100%;
+  margin: 0 auto;
+  /* add padding on top and bottom to add space around the section */
+  padding-block: 7.5rem;
+}
+@media only screen and (min-width: 1024px) {
+  .body-tokens {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    padding-block: 10rem;
+  }
+}
+
+.body-token {
+  /* use of flex to align icon to the center */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* add minimal spacing to have some breathing room */
+  gap: 0.75rem;
+  /* align text center and contain the token */
+  text-align: center;
+  max-width: 390px;
+  width: 100%;
+}
+
+/* Body Columns */
+.body-columns {
+  /* body columns and tokens follow this pattern.. TODO: probably just use a body- prefix and then follow up with BEM */
+  display: grid;
+  place-items: center;
+  gap: 1.5rem;
+  max-width: 330px;
+  width: 100%;
+  margin: 0 auto;
+}
+@media only screen and (min-width: 1024px) {
+  .body-columns {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+.body-columns__copy {
+  /* gap */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* container */
+  max-width: 550px;
+  width: 100%;
+}
+
+.body-columns__cta {
+  display: flex;
+  /* align with arrow logo */
+  align-items: center;
+  gap: 0.5rem;
+  /* keep the underline, but move it slightly away */
+  text-underline-offset: 0.5rem;
+  /* update color */
+  color: hsl(176, 68%, 64%);
+}
+
+/* Testimonials */
+.testimonials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* add gap */
+  gap: 1.5rem;
+  /* breathing room for section */
+  padding-block: 7.5rem;
+}
+@media only screen and (min-width: 1440px) {
+  .testimonials {
+    flex-direction: row;
+    padding-block: 10rem;
+    gap: 3rem;
+  }
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 0.75rem;
+  background: hsl(219, 30%, 18%);
+  max-width: 330px;
+  width: 100%;
+  padding: 2rem;
+}
+@media only screen and (min-width: 768px) {
+  .testimonial {
+    max-width: 400px;
+    width: 100%;
+  }
+}
+
+.testimonial__author {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.testimonial__author-image {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  max-width: 32px;
+  width: 100%;
+}
+
+/* Banner */
+.banner {
+  background: hsl(217, 28%, 15%);
+  /* position */
+  gap: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  /* add rounded corners */
+  border-radius: 0.75rem;
+  /* set size */
+  max-width: 330px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  /* allow for a z-index value so that it can go above the footer */
+  position: relative;
+  z-index: 99;
+  /* shift down half the value of height */
+}
+@media only screen and (min-width: 768px) {
+  .banner {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .banner {
+    padding: 2.5rem;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .banner {
+    margin-bottom: -125px;
+  }
+}
+
+.banner__copy {
+  /* set position for gap */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  /* set size */
+  max-width: 650px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.banner__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.banner__input {
+  max-width: 450px;
+  width: 100%;
+  height: 50px;
+  appearance: none;
+  background: white;
+  border: none;
+  outline: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border-radius: 100vw;
+  padding: 1.5rem;
+}
+
+.banner__button {
+  appearance: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border-radius: 100vw;
+  max-width: 266px;
+  width: 100%;
+  padding: 1rem;
+  font-weight: 700;
+  font-family: "Raleway", "Arial", system-ui, sans-serif;
+  text-align: center;
+  color: hsl(0, 0%, 100%);
+  text-decoration: none;
+  background-image: linear-gradient(90deg, hsl(176, 68%, 64%) 0%, hsl(187, 64%, 57%) 50%, hsl(198, 60%, 50%) 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(hsl(176, 68%, 64%)), color-stop(50%, hsl(187, 64%, 57%)), to(hsl(198, 60%, 50%)));
+  background-image: -o-linear-gradient(left, hsl(176, 68%, 64%) 0%, hsl(187, 64%, 57%) 50%, hsl(198, 60%, 50%) 100%);
+}
+@media only screen and (min-width: 1440px) {
+  .banner__button {
+    border-radius: 100vw;
+    max-width: 225px;
+    width: 100%;
+    padding: 1rem;
+    font-weight: 700;
+    font-family: "Raleway", "Arial", system-ui, sans-serif;
+    text-align: center;
+    color: hsl(0, 0%, 100%);
+    text-decoration: none;
+    background-image: linear-gradient(90deg, hsl(176, 68%, 64%) 0%, hsl(187, 64%, 57%) 50%, hsl(198, 60%, 50%) 100%);
+    background-image: -webkit-gradient(linear, left top, right top, from(hsl(176, 68%, 64%)), color-stop(50%, hsl(187, 64%, 57%)), to(hsl(198, 60%, 50%)));
+    background-image: -o-linear-gradient(left, hsl(176, 68%, 64%) 0%, hsl(187, 64%, 57%) 50%, hsl(198, 60%, 50%) 100%);
+  }
+}
+
+/* Footer */
+.footer {
+  background: hsl(216, 53%, 9%);
+  padding: 11.25rem 1.5rem 2rem;
+}
+@media only screen and (min-width: 768px) {
+  .footer {
+    padding: 2rem 1.5rem;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .footer {
+    padding-block: 15rem 10rem;
+  }
+}
+
+.footer__cols {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+@media only screen and (min-width: 1024px) {
+  .footer__cols {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+  }
+}
+
+.footer__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.footer__location {
+  display: flex;
+  gap: 1.5rem;
+}
+.footer__location img {
+  height: 16px;
+}
+
+.footer__contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer__contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer__nav-list {
+  display: grid;
+  gap: 1.5rem 3.5rem;
+  list-style: none;
+}
+@media only screen and (min-width: 768px) {
+  .footer__nav-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.footer__nav-link {
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+}
+
+.footer__socials {
+  display: flex;
+  gap: 1.5rem;
+  /* set basic visual styles for each social icon - TODO: could be in anchor tags */
+}
+.footer__socials svg {
+  border-radius: 50%;
+  border: 1px solid white;
+  width: 35px;
+  height: 35px;
+  padding: 0.5rem;
+}
+
+/*# sourceMappingURL=base.css.map */

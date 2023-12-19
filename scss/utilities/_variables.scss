@@ -1,0 +1,16 @@
+// Typography
+
+$font-primary: "Open Sans", "Arial", system-ui, sans-serif; // body
+$font-secondary: "Raleway", "Arial", system-ui, sans-serif; // headings, ctas, nav
+
+// Colors
+
+$clr-primary-900: hsl(0, 0%, 100%);
+$clr-primary-800: hsl(176, 68%, 64%); // cta grad
+$clr-primary-700: hsl(0, 100%, 63%); // error
+$clr-primary-600: hsl(198, 60%, 50%); // cta grad
+$clr-primary-500: hsl(219, 30%, 18%); // testimonial background
+$clr-primary-400: hsl(217, 28%, 15%); // intro/email background
+$clr-primary-300: hsl(218, 28%, 13%); // main background
+$clr-primary-200: hsl(216, 53%, 9%); // footer background
+$clr-primary-100: hsla(255, 0%, 0%);
